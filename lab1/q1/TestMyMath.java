@@ -6,6 +6,9 @@ public class TestMyMath {
 
     public static void main(String[] args) {
 
+        //put menu into a loop with exit criteria/option
+        //put individual menu options into loop with exit criteria/option
+
         int choice = 0;
         String choiceAsString = JOptionPane.showInputDialog("""
                 Choose which test you would like to perform
@@ -26,13 +29,23 @@ public class TestMyMath {
 
         switch (choice) {
             case 1 -> {
-                //do error check
                 int numX, numY, numZ;
-                numX = Integer.parseInt(JOptionPane.showInputDialog("Enter First Number"));
-                numY = Integer.parseInt(JOptionPane.showInputDialog("Enter Second Number"));
-                numZ = Integer.parseInt(JOptionPane.showInputDialog("Enter Third Number"));
+                String numXAsString, numYAsString, numZAsString;
+                numXAsString = JOptionPane.showInputDialog("Enter First Number");
+                numYAsString = JOptionPane.showInputDialog("Enter Second Number");
+                numZAsString = JOptionPane.showInputDialog("Enter Third Number");
 
-                JOptionPane.showMessageDialog(null, "The answer is: " + MyMath.findSmallestOf(numX, numY, numZ), "Smallest Number", JOptionPane.INFORMATION_MESSAGE);
+                if(numXAsString.isEmpty() || numYAsString.isEmpty() || numZAsString.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Must enter three valid numbers");
+                }
+                else{
+                    numX = Integer.parseInt(numXAsString);
+                    numY = Integer.parseInt(numYAsString);
+                    numZ = Integer.parseInt(numZAsString);
+
+                    JOptionPane.showMessageDialog(null, "The answer is: " + MyMath.findSmallestOf(numX, numY, numZ), "Smallest Number", JOptionPane.INFORMATION_MESSAGE);
+                }
+
             }
             case 2 -> {
                 String powerAsString, baseAsString;
